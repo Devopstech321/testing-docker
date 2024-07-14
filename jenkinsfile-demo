@@ -17,6 +17,7 @@ pipeline
             steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
                sh 'mvn package'}}
                
-    }
+        }
     
+    }
 }
