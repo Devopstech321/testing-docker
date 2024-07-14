@@ -19,5 +19,9 @@ pipeline
         {
             steps{sh'echo uploaded artifact to jfrog'}
         }
+        stage('copy artifact to jfrog')
+        {
+            steps{sh'echo uploaded artifact to jfrog'}
+        }
     }
 }
