@@ -5,19 +5,19 @@ pipeline
     {
         stage('copy sode from git url')
         {
-            stage{sh'echo code downloded'}
+            steps{sh'echo code downloded'}
         }
         stage('testing')
         {
-            stage{sh'echo testing completed'}
+            steps{sh'echo testing completed'}
         }
         stage('artifact created')
         {
-            stage{sh'echo artifact created'}
+            steps{sh'echo artifact created'}
         }
         stage('copy artifact to jfrog')
         {
-            stage{sh'echo uploaded artifact to jfrog'}
+            steps{sh'echo uploaded artifact to jfrog'}
         }
     }
 }
