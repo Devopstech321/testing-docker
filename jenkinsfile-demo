@@ -1,0 +1,19 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('copy sode from git url')
+        {
+            stage{sh'echo code downloded'}
+        }
+        stage('testing')
+        {
+            stage{sh'echo testing completed'}
+        }
+        stage('artifact created')
+        {
+            stage{sh'echo artifact created'}
+        }
+    }
+}
