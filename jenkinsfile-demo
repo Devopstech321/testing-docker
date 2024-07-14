@@ -3,25 +3,20 @@ pipeline
     agent any
     stages
     {
-        stage('copy sode from git url')
+        stage('scm checkout')
         {
-            steps{sh'echo code downloded'}
+            steps{git branch: 'master', credentialsId: 'GitHub', url: 'https://github.com/Devopstech321/new-maven-project1.git'}
         }
         stage('testing')
         {
-            steps{sh'echo testing completed'}
+            steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
+               sh 'mvn test'}}
         }
-        stage('artifact created')
+        stage('create artifact')
         {
-            steps{sh'echo artifact created'}
-        }
-        stage('copy artifact to jfrog')
-        {
-            steps{sh'echo uploaded artifact to jfrog'}
-        }
-        stage('copy artifact to jfrog')
-        {
-            steps{sh'echo uploaded artifact to jfrog'}
-        }
+            steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
+               sh 'mvn package'}}
+               
     }
+    
 }
