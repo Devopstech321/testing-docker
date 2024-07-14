@@ -18,6 +18,15 @@ pipeline
                sh 'mvn package'}}
                
         }
-    
+        stage('deploy artifact')
+        {
+           steps{sshagent(['new-tomcat']) 
+           { sh 'ssh -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline-job1/webapp/target/*.war ubuntu@172.31.6.85:/opt/tomcat/apache-tomcat-9.0.91/webapps'
+           }
+           }
+        }
+
     }
+    
+    
 }
