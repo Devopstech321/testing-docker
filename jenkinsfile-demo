@@ -12,17 +12,20 @@ pipeline
             steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
                sh 'mvn test'}}
         }
-        stage('create artifact')
+        stage('create artifact & sonar')
         {
-            steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
-               sh 'mvn package'}}
-
+            steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') 
+            {
+            withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar')
+            {sh 'mvn package' 'sonar:sonar'}}
+                 
+                }
         }
-        stage('sonar scanner')
-        {
-            steps{withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') 
-            {sh 'sonar:sonar'}
-        }
+  //      stage('sonar scanner')
+    //    {
+      //      steps{withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') 
+        //    {sh 'sonar:sonar'}
+        //}
  //          steps{sshagent(['new-tomcat']) 
    //        { sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline-job1/webapp/target/*.war ubuntu@172.31.6.85:/opt/tomcat/apache-tomcat-9.0.91/webapps'
      //      }
@@ -32,4 +35,4 @@ pipeline
     }
     
     
-}
+
