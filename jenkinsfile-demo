@@ -21,6 +21,11 @@ pipeline
                  
                 }
         }
+        stage('Docker image')
+        {
+            steps{sh 'docker build -t 123doc123/tomcat:v1 dockerfile' }
+        }
+        
   //      stage('sonar scanner')
     //    {
       //      steps{withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') 
