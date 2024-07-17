@@ -12,15 +12,14 @@ pipeline
             steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') {
                sh 'mvn test'}}
         }
-        stage('create artifact & sonar')
+        stage('create artifact')
         {
-            steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME') 
-            {
-            withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar')
-            {sh 'mvn package' 'sonar:sonar'}}
+          steps{withMaven(jdk: 'JAVA-HOME', maven: 'MAVN-HOME')
+            
+            {sh 'mvn package'}}
                  
                 }
-        }
+        
         stage('Docker image')
         {
             steps{sh 'docker build -t 123doc123/tomcat:v1 dockerfile' }
