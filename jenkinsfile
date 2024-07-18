@@ -22,7 +22,7 @@ pipeline
         
         stage('Docker image')
         {
-            steps{sh 'docker build -t 123doc123/tomcat:v1 .' sh 'docker images'}
+            steps{sh 'docker buildx build -t 123doc123/tomcat:v1 .'}
         }
        
        }
