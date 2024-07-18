@@ -24,19 +24,7 @@ pipeline
         {
             steps{sh 'docker build -t 123doc123/tomcat:v1 dockerfile' }
         }
-        
-  //      stage('sonar scanner')
-    //    {
-      //      steps{withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') 
-        //    {sh 'sonar:sonar'}
-        //}
- //          steps{sshagent(['new-tomcat']) 
-   //        { sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline-job1/webapp/target/*.war ubuntu@172.31.6.85:/opt/tomcat/apache-tomcat-9.0.91/webapps'
-     //      }
-       //    }
-               }
-
-    }
-    
-    
+       
+       }
+}
 

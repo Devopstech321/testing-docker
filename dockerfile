@@ -1,3 +1,4 @@
 FROM tomcat
-WORKDIR usr/local/tomcat/webapps
-COPY **/*war .
+WORKDIR /usr/local/tomcat/webapps
+COPY **/*.war
+
